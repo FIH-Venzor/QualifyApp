@@ -1,0 +1,34 @@
+export interface PackageInfo {
+    packageId: string;
+    partNumber: string;
+    lotCode: string;
+    vendorCode: string;
+    locator: string;
+    status: string;
+    hold: string;
+    line: string | null;
+    recordDate: string;
+    modifiedDate: Date;
+    initialQty: number;
+    updatedQty: number;
+    supplyAsPartType: string | null;
+    primaryPart: string | null;
+    boardKit: string | null;
+    plantCode: string;
+    pkgType: string;
+    rmaAsn: string;
+    expirationDate: string;
+    orderUnitQty: number;
+    commercialPn: string | null;
+    splitTimes: number;
+    modifiedUser: string;
+    impNac: string;
+    cuuFactura: string | null;
+    orderNumber: string | null;
+    mfgDate: string | null;
+    shelfLifeDate: string | null;
+    conservationLifeDate: string | null;
+    station: string | null;
+    manufactDateCode: string | null;
+    manufactDateCodeFormat: string | null;
+}
