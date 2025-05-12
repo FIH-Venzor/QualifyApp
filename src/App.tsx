@@ -142,16 +142,22 @@ const App: React.FC = () => {
         setOpenKeys(keys);
     };
 
+    const renderRoute = (route: any): JSX.Element | null => {
+        if (route.path && route.component) {
+            return <Route key={route.key} path={route.path} element={React.createElement(route.component, route.params)} />;
+        }
+        return null;
+    };
+
+
     const renderRoutes = () => {
         const routes: JSX.Element[] = [];
         menuConfig.forEach((item) => {
-            if (item.path && item.component) {
-                routes.push(<Route key={item.key} path={item.path} element={React.createElement(item.component,  item.params )} />);
-            }
+            const route = renderRoute(item);
+            if (route) routes.push(route);
             item.children?.forEach((child) => {
-                if (child.path && child.component) {
-                    routes.push(<Route key={child.key} path={child.path} element={React.createElement(child.component, child.params)} />);
-                }
+                const childRoute = renderRoute(child);
+                if (childRoute) routes.push(childRoute);
             });
         });
         routes.push(<Route key="default" path="/" element={<Overview />} />);
